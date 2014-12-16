@@ -17,29 +17,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
             //let vc1:UIViewController = ViewController()
-            let vc1:UIViewController = ProductsCollectionView()
+            let vc1:UIViewController = MyCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             let nav1 = UINavigationController(rootViewController: vc1);
             
             let image1 = UIImage(named:"icon_shop");
             nav1.tabBarItem = UITabBarItem(title: "SHOP", image:image1, tag: 1);
             
             
-            let vc2:UIViewController =  ProductsCollectionView()
+            let vc2:UIViewController =  MyCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             let nav2 = UINavigationController(rootViewController: vc2);
             let image2 = UIImage(named: "icon_consign");
             nav2.tabBarItem = UITabBarItem(title: "CONSIGN", image:image2, tag: 2);
             
-            let vc3:UIViewController =  ProductsCollectionView()
+            let vc3:UIViewController =  MyCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             let nav3 = UINavigationController(rootViewController: vc3);
             let image3 = UIImage(named:"icon_me");
             nav3.tabBarItem = UITabBarItem(title: "ME", image:image3, tag: 3);
             
-            let vc4:UIViewController =  ProductsCollectionView()
+            let vc4:UIViewController =  MyCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             let nav4 = UINavigationController(rootViewController: vc4);
             let image4 = UIImage(named:"my_feed_edit");
             nav4.tabBarItem = UITabBarItem(title: "FEEDS", image:image4, tag: 3);
             
-            let vc5:UIViewController =  ProductsCollectionView()
+            let vc5:UIViewController =  MyCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
             let nav5 = UINavigationController(rootViewController: vc5);
             let image5 = UIImage(named:"tabbar_search");
             nav5.tabBarItem = UITabBarItem(title: "SEARCH", image:image5, tag: 3);
@@ -55,39 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //window.rootViewController = nav1
         }
         return true
-        
-        if let window = window {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window!.backgroundColor = UIColor.whiteColor()
-        
-        let vc1:UIViewController = ProductsCollectionView()
-        let nav1 = UINavigationController(rootViewController: vc1);
-        //let image1 = UIImage(named:"obsess_icon_selected");
-        //nav1.tabBarItem = UITabBarItem(title: "First", image:image1, tag: 1);
-        
-        let vc2:UIViewController =  ProductsCollectionView()
-        let nav2 = UINavigationController(rootViewController: vc2);
-        //let image2 = UIImage(named: "globe");
-        //nav2.tabBarItem = UITabBarItem(title: "Second", image:image2, tag: 2);
-        
-        let vc3:UIViewController =  ProductsCollectionView()
-        let nav3 = UINavigationController(rootViewController: vc3);
-        //let image3 = UIImage(named:"icon_settings");
-        //nav3.tabBarItem = UITabBarItem(title: "Third", image:image3, tag: 3);
-        
-        let arr = [nav1, nav2, nav3];
-        let tabBarController = UITabBarController();
-        tabBarController.viewControllers = arr;
-        self.window!.rootViewController = tabBarController;
-        
-        
-        window.backgroundColor = UIColor.whiteColor()
-        window.makeKeyAndVisible()
-        window.rootViewController = nav1
-        }
-        
-        return true
-
+       
     }
 
     

@@ -27,8 +27,9 @@ class MyCollectionViewCell: UICollectionViewCell {
         textLabel.textAlignment = .Center
         //contentView.addSubview(textLabel)  //this should be in top of the imageview, so add it after adding the imageview
         
-        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height  /* *2/3 */))
+        imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height ))
         imageView.contentMode = UIViewContentMode.ScaleAspectFit
+        //imageView.backgroundColor = UIColor.blueColor()
         contentView.addSubview(imageView)
         
         contentView.addSubview(textLabel)  //this should be in top of the imageview, so add it after adding the imageview

@@ -1,16 +1,17 @@
 //
-//  ProductsCollectionView.swift
-//  JZScrollViewEx
+//  MyCollectionViewController.swift
+//  JZCollectionViewEx
 //
-//  Created by Jihong Zhang on 12/11/14.
+//  Created by Jihong Zhang on 12/15/14.
 //  Copyright (c) 2014 Jihong Zhang. All rights reserved.
 //
 
 import UIKit
 
+let reuseIdentifier = "Cell"
 
-class ProductsCollectionView : UICollectionViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
+class MyCollectionViewController: UICollectionViewController {
+
     private let footerCellName = "CategoryFooterViewIdentifier"
     private let headerCellName = "CategoryHeaderViewIdentifier"
     private let MyCollectionCellName = "MyCollectionCellIdentifier"
@@ -19,14 +20,11 @@ class ProductsCollectionView : UICollectionViewController, UICollectionViewDeleg
     
     let HorizontalSpacing : CGFloat = 5.0
     let VerticalSpacing : CGFloat = 5.0
-
     
-    var refreshControl = UIRefreshControl()
-    
-    
-    //var collectionView: UICollectionView!
     var arrImages : [String]!
     
+    var refreshControl = UIRefreshControl()
+
     var name : AnyObject? {
         get {
             return NSUserDefaults.standardUserDefaults().objectForKey("name")
@@ -37,74 +35,36 @@ class ProductsCollectionView : UICollectionViewController, UICollectionViewDeleg
         }
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    override init(collectionViewLayout layout: UICollectionViewLayout!){
-        super.init()
-        
-        let screenSize = UIScreen.mainScreen().bounds
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: VerticalSpacing, left: HorizontalSpacing, bottom: VerticalSpacing, right: HorizontalSpacing)
-        layout.itemSize = CGSize(width: (screenSize.width-40)/2, height: (self.view.frame.height-160)/2 )   //4 cells
-        self.collectionView!.collectionViewLayout = layout
-    }
-    
-    /*
-    override init(){
-        super.init()
-        
-        let screenSize = UIScreen.mainScreen().bounds
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: VerticalSpacing, left: HorizontalSpacing, bottom: VerticalSpacing, right: HorizontalSpacing)
-        layout.itemSize = CGSize(width: (screenSize.width-40)/2, height: (self.view.frame.height-160)/2 )   //4 cells
-        self.collectionView!.collectionViewLayout = layout
-
-    }
-*/
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-/*
-        let screenSize = UIScreen.mainScreen().bounds
-        
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: VerticalSpacing, left: HorizontalSpacing, bottom: VerticalSpacing, right: HorizontalSpacing)
-        layout.itemSize = CGSize(width: (screenSize.width-40)/2, height: (self.view.frame.height-160)/2 )   //4 cells
-        self.collectionView!.collectionViewLayout = layout
-*/
-        /*
-        collectionView = UICollectionView(frame: self.view.frame, collectionViewLayout: layout)
-        collectionView!.dataSource = self
-        collectionView!.delegate = self
-        //collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
-        collectionView!.registerClass(CollectionViewCell.self, forCellWithReuseIdentifier: "CollectionCell")
-        collectionView!.backgroundColor = UIColor.whiteColor()  //.blueColor()   //.whiteColor()
-        */
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Register cell classes
+        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
+        // Do any additional setup after loading the view.
         setupView()
         
         //TODO: check if we have the similar images
         self.arrImages = ["YVE24841_1_enlarged.jpg", "img_dlp_dress1.png", "ANA20278_1_enlarged.jpg", "MAC20030_1_enlarged.jpg", "WDM20408_1_enlarged.jpg"];
-        self.view.addSubview(collectionView!)
+        
     }
     
     func setupView(){
         navigationController?.setNavigationBarHidden(false, animated: true)
-        /*
+        
         let layout = UICollectionViewFlowLayout()
         defaultCellSize = (view.bounds.size.width - CGFloat(2.0)) / CGFloat(2.0)
         layout.itemSize = CGSize(width: defaultCellSize, height: defaultCellSize)
         layout.minimumInteritemSpacing = 1.0
-        layout.minimumLineSpacing = 1.0
+        layout.minimumLineSpacing = 20.0
         layout.headerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height:headerSectionHeight)
         layout.footerReferenceSize = CGSize(width: collectionView!.bounds.size.width, height: 100.0)
-
+        
         collectionView!.collectionViewLayout = layout
-        */
+
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 30.0))
         titleLabel.text = title
@@ -116,12 +76,32 @@ class ProductsCollectionView : UICollectionViewController, UICollectionViewDeleg
         
         collectionView!.registerClass(MyCollectionViewCell.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerCellName)
         collectionView!.registerClass(MyCollectionViewCell.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerCellName)
+        collectionView!.backgroundColor = UIColor.whiteColor()
+        
         
         refreshControl.tintColor = UIColor.whiteColor()
         refreshControl.addTarget(self, action: "handleRefresh", forControlEvents: .ValueChanged)
         collectionView!.addSubview(refreshControl)
     }
-    
+
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+    // MARK: UICollectionViewDataSource
+
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrImages.count // total number of cells
     }
@@ -135,13 +115,48 @@ class ProductsCollectionView : UICollectionViewController, UICollectionViewDeleg
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(MyCollectionCellName, forIndexPath: indexPath) as MyCollectionViewCell
         cell.textLabel?.text = "Text AAAAAAAA"
+        //cell.imageView.image = UIImage(named: self.arrImages![indexPath.item])
         cell.imageView.image = UIImage(named: self.arrImages![indexPath.row])
         return cell
     }
     
     override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+        if(indexPath.row >= arrImages.count){
+            return
+        }
+        //name = arrImages![indexPath.item]
         name = arrImages![indexPath.row]
-        println("in didDeselectItemAtIndexPath: \(indexPath.row), name: \(name)")
+        println("in didDeselectItemAtIndexPath:indexPath.item=\(indexPath.item), row:\(indexPath.row),  name: \(name)")
     }
-}
+    // MARK: UICollectionViewDelegate
 
+    /*
+    // Uncomment this method to specify if the specified item should be highlighted during tracking
+    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment this method to specify if the specified item should be selected
+    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    */
+
+    /*
+    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+
+    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
+        return false
+    }
+
+    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
+    
+    }
+    */
+
+}
