@@ -120,13 +120,14 @@ class MyCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    override func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
-        if(indexPath.row >= arrImages.count){
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        var row: Int = indexPath.row
+        if(row >= arrImages.count){
             return
         }
         //name = arrImages![indexPath.item]
-        name = arrImages![indexPath.row]
-        println("in didDeselectItemAtIndexPath:indexPath.item=\(indexPath.item), row:\(indexPath.row),  name: \(name)")
+        name = arrImages![row]
+        println("in didDeselectItemAtIndexPath:indexPath.item=\(indexPath.item)-row=\(indexPath.row),  row:\(row),  name: \(name)")
     }
     // MARK: UICollectionViewDelegate
 

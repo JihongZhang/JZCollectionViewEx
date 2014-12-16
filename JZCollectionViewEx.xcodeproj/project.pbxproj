@@ -28,7 +28,6 @@
 		08DD11771A3F72BC00DE22F6 /* icon_me@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DD11761A3F72BC00DE22F6 /* icon_me@2x.png */; };
 		08DD11791A3F79EE00DE22F6 /* my_feed_edit.png in Resources */ = {isa = PBXBuildFile; fileRef = 08DD11781A3F79EE00DE22F6 /* my_feed_edit.png */; };
 		08DD117B1A3F939500DE22F6 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD117A1A3F939500DE22F6 /* MyCollectionViewCell.swift */; };
-		08DD11EB1A3FF06700DE22F6 /* ProductsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD11EA1A3FF06700DE22F6 /* ProductsCollectionView.swift */; };
 		08DD11ED1A3FF0AD00DE22F6 /* MyCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD11EC1A3FF0AD00DE22F6 /* MyCollectionViewController.swift */; };
 		08E2CB951A3B7F4D0082A440 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2CB941A3B7F4D0082A440 /* AppDelegate.swift */; };
 		08E2CB971A3B7F4D0082A440 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E2CB961A3B7F4D0082A440 /* ViewController.swift */; };
@@ -69,7 +68,6 @@
 		08DD11761A3F72BC00DE22F6 /* icon_me@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_me@2x.png"; sourceTree = "<group>"; };
 		08DD11781A3F79EE00DE22F6 /* my_feed_edit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_feed_edit.png; sourceTree = "<group>"; };
 		08DD117A1A3F939500DE22F6 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
-		08DD11EA1A3FF06700DE22F6 /* ProductsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductsCollectionView.swift; sourceTree = "<group>"; };
 		08DD11EC1A3FF0AD00DE22F6 /* MyCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewController.swift; sourceTree = "<group>"; };
 		08E2CB8F1A3B7F4D0082A440 /* JZCollectionViewEx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JZCollectionViewEx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08E2CB931A3B7F4D0082A440 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,7 +147,6 @@
 			isa = PBXGroup;
 			children = (
 				08DD11EC1A3FF0AD00DE22F6 /* MyCollectionViewController.swift */,
-				08DD11EA1A3FF06700DE22F6 /* ProductsCollectionView.swift */,
 				08E2CB941A3B7F4D0082A440 /* AppDelegate.swift */,
 				08E2CB961A3B7F4D0082A440 /* ViewController.swift */,
 				08DD117A1A3F939500DE22F6 /* MyCollectionViewCell.swift */,
@@ -307,7 +304,6 @@
 			files = (
 				08E2CB971A3B7F4D0082A440 /* ViewController.swift in Sources */,
 				08DD117B1A3F939500DE22F6 /* MyCollectionViewCell.swift in Sources */,
-				08DD11EB1A3FF06700DE22F6 /* ProductsCollectionView.swift in Sources */,
 				08DD11ED1A3FF0AD00DE22F6 /* MyCollectionViewController.swift in Sources */,
 				08E2CB951A3B7F4D0082A440 /* AppDelegate.swift in Sources */,
 			);
