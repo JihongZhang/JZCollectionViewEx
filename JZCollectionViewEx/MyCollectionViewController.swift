@@ -41,9 +41,7 @@ class MyCollectionViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
-        // Register cell classes
-        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
+        
         // Do any additional setup after loading the view.
         setupView()
         
@@ -72,6 +70,9 @@ class MyCollectionViewController: UICollectionViewController {
         titleLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
         navigationItem.titleView = titleLabel
         
+        // Register cell classes
+        self.collectionView!.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
         collectionView!.registerClass(MyCollectionViewCell.classForCoder(), forCellWithReuseIdentifier:MyCollectionCellName)
         
         collectionView!.registerClass(MyCollectionViewCell.classForCoder(), forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: footerCellName)
@@ -90,6 +91,13 @@ class MyCollectionViewController: UICollectionViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func goToProductDetailPage() {
+        NSLog("goToNextPage clicked");
+        let svc = ProductDetailViewController()
+        self.navigationController?.pushViewController(svc, animated: true);
+    }
+
+    
     /*
     // MARK: - Navigation
 
@@ -128,7 +136,17 @@ class MyCollectionViewController: UICollectionViewController {
         //name = arrImages![indexPath.item]
         name = arrImages![row]
         println("in didDeselectItemAtIndexPath:indexPath.item=\(indexPath.item)-row=\(indexPath.row),  row:\(row),  name: \(name)")
+        
+        goToProductDetailPage()
+        
+        /*
+        var childVC = ProductVC(nibName : "ProductVC", bundle : nil)
+        childVC.title = "Product"
+        self.navigationController?.pushViewController(childVC, animated: false)
+        */
     }
+    
+    
     // MARK: UICollectionViewDelegate
 
     /*
