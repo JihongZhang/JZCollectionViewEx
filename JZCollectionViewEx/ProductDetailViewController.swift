@@ -226,9 +226,16 @@ class ProductDetailViewController: UIViewController , UICollectionViewDelegateFl
         name = arrImages![row]
         println("in didDeselectItemAtIndexPath:indexPath.item=\(indexPath.item)-row=\(indexPath.row),  row:\(row),  name: \(name)")
         
-        //goToProductDetailPage()
+        goToProductDetailPage()
         
     }
+    
+    func goToProductDetailPage() {
+        NSLog("goToNextPage clicked");
+        let svc = ProductDetailViewController()
+        self.navigationController?.pushViewController(svc, animated: true);
+    }
+
     
 }
 
