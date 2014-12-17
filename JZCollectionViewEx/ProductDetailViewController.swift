@@ -42,17 +42,18 @@ class ProductDetailViewController: UIViewController , UICollectionViewDelegateFl
         let screenSize = UIScreen.mainScreen().bounds
         screenWidth = screenSize.width as CGFloat
         screenHeight = screenSize.height as CGFloat
-        scrollviewProductDetailAllHeight = screenSize.height * 3 as CGFloat
+        scrollviewProductDetailAllHeight = screenSize.height * 4 as CGFloat
         scrollviewProductDetailImageHeight = screenSize.height * 0.6 as CGFloat
         
         // setup the scroll view
         self.scrollviewProductDetailAll.frame = CGRectMake(0, 0, screenWidth!, scrollviewProductDetailAllHeight!)
-        self.scrollviewProductDetailAll.contentSize = CGSize(width:screenWidth!, height:scrollviewProductDetailAllHeight!)
-        //self.scrollviewProductDetailAll.backgroundColor = UIColor.purpleColor()  //for tmp test only 
+        //TODO: why the follwoing setting is not working, I have to use the fix number to make it work
+        //self.scrollviewProductDetailAll.contentSize = CGSize(width:screenWidth!, height:scrollviewProductDetailAllHeight!)
+        self.scrollviewProductDetailAll.contentSize = CGSize(width:screenWidth!, height:4000)
         
         self.scrollviewProductDetailImage.frame = CGRectMake(0, 0, screenWidth!, scrollviewProductDetailImageHeight!)
         self.scrollviewProductDetailImage.contentSize = CGSize(width:screenWidth!, height:scrollviewProductDetailImageHeight! * self.numOfImage)
-        self.scrollviewProductDetailImage.backgroundColor = UIColor.redColor()
+        //self.scrollviewProductDetailImage.backgroundColor = UIColor.redColor()  for tmp test only
         self.scrollviewProductDetailAll.addSubview(self.scrollviewProductDetailImage)
         
         //TODO: dynamically calculate the # of images
